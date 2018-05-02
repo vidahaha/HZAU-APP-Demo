@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -13,15 +7,17 @@ import {
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
 
+import Index from './src/container/Index'
+
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <ScrollableTabView>
-        <Text tabLabel='Tab #1'>My</Text>
-        <Text tabLabel='Tab #2'>favorite</Text>
-        <Text tabLabel='Tab #3'>project</Text>
+      <ScrollableTabView>      
+        <Index tabLabel='新闻活动' style={styles.container}></Index>
+        <Text tabLabel='校园风光' style={styles.container}>favorite</Text>
+        <Text tabLabel='院系介绍' style={styles.container}>project</Text>
       </ScrollableTabView>
     );
   }
@@ -33,15 +29,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
     textAlign: 'center',
     color: '#333333',
+    paddingTop: 20,
     marginBottom: 5,
-  },
+    fontSize: 20,
+  }
 });
