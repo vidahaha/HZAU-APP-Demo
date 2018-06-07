@@ -6,33 +6,21 @@ import {
   View
 } from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
+import {Scene, Router, Stack} from 'react-native-router-flux';
 
 import Index from './src/container/Index'
+import news_123456789 from './src/container/news/news_123456789'
 
-
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   render() {
     return (
-      <ScrollableTabView>      
-        <Index tabLabel='新闻活动' style={styles.container}></Index>
-        <Text tabLabel='校园风光' style={styles.container}>favorite</Text>
-        <Text tabLabel='院系介绍' style={styles.container}>project</Text>
-      </ScrollableTabView>
+      <Router>
+        <Stack key="root">
+          <Scene key="index" component={Index}  hideNavBar={true}/>
+          <Scene key="news_123456789" component={news_123456789}  title="news" />          
+        </Stack>
+      </Router>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    textAlign: 'center',
-    color: '#333333',
-    paddingTop: 20,
-    marginBottom: 5,
-    fontSize: 20,
-  }
-});

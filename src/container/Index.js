@@ -3,62 +3,36 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,
-  Image,
-  FlatList,
-  Alert
+  View
 } from 'react-native';
+import ScrollableTabView from 'react-native-scrollable-tab-view';
 
-import {item} from '../data/list.json'
-
+import News from './tab/News'
+import Picture from './tab/Picture'
 
 export default class Index extends Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			item,
-		}
-	}
-
 	render() {
 		return (
-			<View>
-				<Image source={require("../image/back.png")} style={styles.image}/>	
-				<View style={styles.listWrap}>
-					<FlatList data={this.state.item} renderItem={({item}) => 
-						<Text style={styles.list} onPress={()=>{
-							Alert.alert('ok');
-						}}>
-							{this.format(item.title, 20)} 
-						</Text>
-					} />
-				</View>			
-			</View>
+			<ScrollableTabView>      
+				<News tabLabel='新闻活动' style={styles.container}></News>
+				<Picture tabLabel='校园风光' style={styles.container}>favorite</Picture>
+				<Text tabLabel='院系介绍' style={styles.container}>project</Text>
+			</ScrollableTabView>
 		);
-	}
-
-	format( text, len ) {
-		if (text.length > len ) {
-			text = text.slice(0, len-1) + '...';
-		}
-		return text;
 	}
 }
 
 const styles = StyleSheet.create({
-	image: {
-		width: 500,
-		height: 260
-	},
-	listWrap: {
-		paddingLeft: 20,
-		paddingRight: 20,
-		marginTop: 10,	
-	},
-	list: {
-		fontSize:18,
-		marginTop: 5,
-		marginBottom: 5,
+	container: {
+	  flex: 1,
+	  justifyContent: 'center',
+	  alignItems: 'center',
+	  backgroundColor: '#F5FCFF',
+	  textAlign: 'center',
+	  color: '#333333',
+	  paddingTop: 20,
+	  marginBottom: 5,
+	  fontSize: 20,
 	}
-});
+  });
+  
